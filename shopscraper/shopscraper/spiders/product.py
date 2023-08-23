@@ -10,7 +10,7 @@ import time
 class ProductSpider(scrapy.Spider):
     name = "product"
     allowed_domains = ["shop.mango.com"]
-    start_urls = ["https://shop.mango.com/gb/women/skirts-midi/midi-satin-skirt_17042020.html?c=99"]
+    start_urls = ["https://shop.mango.com/bg-en/men/t-shirts-plain/100-linen-slim-fit-t-shirt_47095923.html?c=07"]
 
     def parse(self, response, *args, **kwargs):
         driver = webdriver.Chrome()

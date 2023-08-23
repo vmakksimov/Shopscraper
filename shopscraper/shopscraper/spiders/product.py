@@ -12,22 +12,6 @@ class ProductSpider(scrapy.Spider):
     allowed_domains = ["shop.mango.com"]
     start_urls = ["https://shop.mango.com/gb/women/skirts-midi/midi-satin-skirt_17042020.html?c=99"]
 
-    # def start_requests(self):
-    #     # settings = get_project_settings()
-    #     # driver_path = settings.get('CHROME_DRIVER_PATH')
-    #     # driver = webdriver.Chrome(driver_path)
-    #     url = "https://shop.mango.com/gb/women/skirts-midi/midi-satin-skirt_17042020.html?c=99"
-    #     yield SeleniumRequest(url=url, callback=self.parse, wait_time=10)
-        # driver.get(url)
-        # time.sleep(
-        #     5)
-        # sel = Selector(text=driver.page_source)
-        # name = sel.css('.product-name::text').extract()
-        # price = sel.css('.sAobE ::text').extract()
-        # yield scrapy.Request(name[0])
-        # driver.quit()
-        # item_ano = sel.xpath('//*[@class="product-name"]//text()').extract()  # It is also working
-
     def parse(self, response, *args, **kwargs):
         driver = webdriver.Chrome()
         driver.get("https://shop.mango.com/bg-en/men/t-shirts-plain/100-linen-slim-fit-t-shirt_47095923.html?c=07")

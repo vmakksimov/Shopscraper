@@ -22,14 +22,5 @@ class ProductSpider(scrapy.Spider):
         product['price'] = float("".join(sel.css('.sAobE::text').extract()).split(' ')[1])
         product['colour'] = "".join(sel.css('.colors-info-name::text').extract())
         product['size'] = sel.css('.gk2V5::text').extract()
-
-        # for li in sel.css('.knfzQ').extract():
-        #     if li ==
-        #             product['sizes'] = li
-
-        # in_stock = sel.css('.ENYWg::text').extract()
-        # if len(in_stock) > 0:
-
-
         yield product
 

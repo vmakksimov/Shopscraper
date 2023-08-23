@@ -20,7 +20,6 @@ DOWNLOADER_MIDDLEWARES = {
 BOT_NAME = "shopscraper"
 SPIDER_MODULES = ["shopscraper.spiders"]
 NEWSPIDER_MODULE = "shopscraper.spiders"
-CHROME_DRIVER_PATH = 'C:\Python\Scrapy\Task\shopscraper\chromedriver.exe'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "shopscraper (+http://www.yourdomain.com)"

@@ -20,6 +20,7 @@ DOWNLOADER_MIDDLEWARES = {
 BOT_NAME = "shopscraper"
 SPIDER_MODULES = ["shopscraper.spiders"]
 NEWSPIDER_MODULE = "shopscraper.spiders"
+DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "shopscraper (+http://www.yourdomain.com)"

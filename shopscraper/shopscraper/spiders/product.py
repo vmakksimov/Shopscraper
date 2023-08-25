@@ -1,8 +1,8 @@
 import scrapy
-#from selenium import webdriver - UNMARK TO WORK WITH SELENIUM
-#from scrapy import Selector - UNMARK TO WORK WITH SELENIUM
-#from ..items import Product - UNMARK TO WORK WITH SELENIUM
+from selenium import webdriver
+from scrapy import Selector
 import time
+from ..items import Product
 import json
 
 
@@ -30,24 +30,19 @@ class ProductSpider(scrapy.Spider):
     def parse(self, response, *args, **kwargs):
         raw_data = response.body
         data = json.loads(raw_data)
-        color = ''
-        price = ''
+        product = Product()
         size = []
+        product['name'] = data['name']
         for el in data['colors'].get('colors'):
-            color = el['label']
-            price = el['price']['price']
-            for item in el['sizes']:
-                size.append(item['value'])
+            product['price'] = el['price']['price']
+            product['colour'] = el['label']
+            [size.append(item['value']) for item in el['sizes']]
+            product['size'] = size
             break
 
-        yield {
-            'name': data['name'],
-            'color': color,
-            'price': price,
-            'size' : size
-        }
+        yield product
 
-        ### UNMARK TO WORK WITH SELENIUM
+        # UNMARK BELOW TO RUN WITH SELENIUM
 
         # def parse(self, response, *args, **kwargs):
             # self.driver.get("".join(self.start_urls))

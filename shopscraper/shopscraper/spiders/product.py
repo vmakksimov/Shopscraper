@@ -2,7 +2,7 @@ import scrapy
 from selenium import webdriver
 from scrapy import Selector
 import time
-from ..items import Product
+#from ..items import Product
 import json
 
 
@@ -20,17 +20,22 @@ class ProductSpider(scrapy.Spider):
     def parse(self, response, *args, **kwargs):
         raw_data = response.body
         data = json.loads(raw_data)
-        product = Product()
+        name = data['name']
         size = []
-        product['name'] = data['name']
+        price = ''
+        colour = ''
         for el in data['colors'].get('colors'):
-            product['price'] = el['price']['price']
-            product['colour'] = el['label']
+            price = el['price']['price']
+            colour = el['label']
             [size.append(item['value']) for item in el['sizes']]
-            product['size'] = size
             break
 
-        yield product
+        yield {
+            'name' : name,
+            'price' : price,
+            'colour' : colour,
+            'size' : size
+        }
 
     #UNMARK TO RUN WITH SELENIUM
 
